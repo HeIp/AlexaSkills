@@ -15,6 +15,7 @@ cancel,stop,help,fallback,..
 const Alexa = require('ask-sdk');
 const http = require(`http`);
 
+//checks if getnewfact intent was given
 const GetNewFactHandler = {
   canHandle(handlerInput) {
     const request = handlerInput.requestEnvelope.request;
@@ -22,6 +23,19 @@ const GetNewFactHandler = {
       || (request.type === 'IntentRequest'
         && request.intent.name === 'GetNewFactIntent');
   },
+  //Previous code that would run if getnewfact intent
+   // handle(handlerInput) {
+  //   const factArr = data;
+  //   const factIndex = Math.floor(Math.random() * factArr.length);
+  //   const randomFact = factArr[factIndex];
+  //   const speechOutput = GET_FACT_MESSAGE + randomFact;
+
+  //   return handlerInput.responseBuilder
+  //     .speak(speechOutput)
+  //     .withSimpleCard(SKILL_NAME, randomFact)
+  //     .getResponse();
+  // },
+  //if getnewfact intent do this
   handle(handlerInput) {
     let options = {
       host: `numbersapi.com`,
@@ -95,12 +109,29 @@ const ErrorHandler = {
 
 //ALEXA fact name to start fact skill
 const SKILL_NAME = 'Silly Number Facts';
-const GET_FACT_MESSAGE = 'Here\'s your fact: ';
+//constant alexa string value that you can appent to your return
+const GET_FACT_MESSAGE = 'Here\'s your random year fact!: ';
 //usage statement
 const HELP_MESSAGE = 'You can say tell find random year info year history fact, or, you can say exit... What can I help you with?';
 const HELP_REPROMPT = 'What can I help you with?';
 const STOP_MESSAGE = 'Goodbye!';
 
+//Commented out cause not used.
+// const data = [
+//   'A year on Mercury is just 88 days long.',
+//   'Despite being farther from the Sun, Venus experiences higher temperatures than Mercury.',
+//   'Venus rotates counter-clockwise, possibly because of a collision in the past with an asteroid.',
+//   'On Mars, the Sun appears about half the size as it does on Earth.',
+//   'Earth is the only planet not named after a god.',
+//   'Jupiter has the shortest day of all the planets.',
+//   'The Milky Way galaxy will collide with the Andromeda Galaxy in about 5 billion years.',
+//   'The Sun contains 99.86% of the mass in the Solar System.',
+//   'The Sun is an almost perfect sphere.',
+//   'A total solar eclipse can happen once every 1 to 2 years. This makes them a rare event.',
+//   'Saturn radiates two and a half times more energy into space than it receives from the sun.',
+//   'The temperature inside the Sun can reach 15 million degrees Celsius.',
+//   'The Moon is moving approximately 3.8 cm away from our planet every year.',
+// ];
 
 async function httpRequestPromise(options) {
   //log the options in case we need to debug
