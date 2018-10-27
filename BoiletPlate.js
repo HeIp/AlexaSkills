@@ -1,3 +1,14 @@
+/*
+Invocation name initiates interaction with skill
+"start ___" , 
+"tell ___"
+
+BUILT IN INTENTS:
+cancel,stop,help,fallback,..
+
+*/
+
+
 /* eslint-disable  func-names */
 /* eslint-disable  no-console */
 
@@ -82,9 +93,11 @@ const ErrorHandler = {
   },
 };
 
+//ALEXA fact name to start fact skill
 const SKILL_NAME = 'Silly Number Facts';
 const GET_FACT_MESSAGE = 'Here\'s your fact: ';
-const HELP_MESSAGE = 'You can say tell me a silly number fact, or, you can say exit... What can I help you with?';
+//usage statement
+const HELP_MESSAGE = 'You can say tell find random year info year history fact, or, you can say exit... What can I help you with?';
 const HELP_REPROMPT = 'What can I help you with?';
 const STOP_MESSAGE = 'Goodbye!';
 
